@@ -1,14 +1,14 @@
 <p>Api Component</p>
 <input #dataName />
-
+<input #dataName2 />
 <button (click)="showData()">get</button>
-<!-- <button (click)="createnew(dataName.value); dataName.value=''">add</button> -->
+<button (click)="createnew(dataName.value,dataName2.value); dataName.value='';dataName2.value=''">add</button>
 
 <div *ngIf="data">
     <li *ngFor="let dt of data">
       <a (click)="edit(dt)">
         <span *ngIf="dt!==editData">{{dt.title}}</span>
-        <input *ngIf="dt===editData" [(ngModel)]="dt.title" (blur)="update()" (keyup.enter)="update()">
+        <input *ngIf="dt===editData" [(ngModel)]="dt.title" (blur)="update(dt)" (keyup.enter)="update(dt)">
       </a>
       <p>id "{{dt.id}}"</p>
       <p>description is "{{dt.description}}"</p>

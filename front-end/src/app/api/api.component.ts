@@ -28,17 +28,21 @@ export class ApiComponent implements OnInit {
   }
 
   // post
-  // createnew(name: string): void {
-  //   this.editData = undefined;
-  //   name = name.trim();
-  //   if (!name) {
-  //     return;
-  //   }
-  //   const newData: Data = { name } as Data;
-  //   this.apiService
-  //     .addData(newData)
-  //     .subscribe(data => this.data.push(data));
-  // }
+  createnew(
+    title: string,
+    description:string,
+    ): void {
+    this.editData = undefined;
+    title = title.trim();
+    description=description.trim();
+    if (!title) {
+      return;
+    }
+    const newData: Data = { title,description } as Data;
+    this.apiService
+      .addData(newData)
+      .subscribe(data => this.data.push(data));
+  }
 
   // delete
   delete(data:Data): void {
@@ -54,10 +58,10 @@ export class ApiComponent implements OnInit {
   }
 
   // put
-  update() {
+  update(data: Data) {
     if (this.editData) {
       this.apiService
-        .updateData(this.editData)
+        .updateData(data.id,this.editData)
         .subscribe(datas => {
         const ix = datas ? this.data.findIndex(h => h.id === datas.id) : -1;
         if (ix > -1) {

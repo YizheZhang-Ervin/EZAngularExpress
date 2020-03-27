@@ -53,11 +53,11 @@ export class ApiService {
   }
 
   /* PUT: update one from DB */
-  updateData (data: Data): Observable<Data> {
+  updateData (id:number,data: Data): Observable<Data> {
     httpOptions.headers =
       httpOptions.headers.set('Authorization', 'my-new-auth-token');
-
-    return this.http.put<Data>(this.ApiUrl, data, httpOptions)
+    const url = `${this.ApiUrl}/${id}`;
+    return this.http.put<Data>(url, data, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
