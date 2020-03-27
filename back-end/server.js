@@ -7,7 +7,7 @@ let express = require("express"),
   bodyParser = require("body-parser");
 
 // connect to DB
-mongoose.connect("mongodb://localhost:27017/todolist", {});
+mongoose.connect("mongodb://localhost:27017/test", {});
 mongoose.Promise = global.Promise;
 mongoose.set("useFindAndModify", false);
 

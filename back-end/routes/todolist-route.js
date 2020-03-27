@@ -2,11 +2,11 @@
 const todolistController = require("../controllers/todolist-controller");
 module.exports = app => {
   app
-    .route("/todolist")
+    .route("/api/test")
     .get(todolistController.list)
     .post(todolistController.save);
   app
-    .route("/todolist/:id")
+    .route("/api/test/:id")
     .put(todolistController.update)
     .delete(todolistController.delete);
 };

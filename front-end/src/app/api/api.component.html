@@ -1,0 +1,19 @@
+<p>Api Component</p>
+<input #dataName />
+
+<button (click)="showData()">get</button>
+<!-- <button (click)="createnew(dataName.value); dataName.value=''">add</button> -->
+
+<div *ngIf="data">
+    <li *ngFor="let dt of data">
+      <a (click)="edit(dt)">
+        <span *ngIf="dt!==editData">{{dt.title}}</span>
+        <input *ngIf="dt===editData" [(ngModel)]="dt.title" (blur)="update()" (keyup.enter)="update()">
+      </a>
+      <p>id "{{dt.id}}"</p>
+      <p>description is "{{dt.description}}"</p>
+      <p>create "{{dt.createDate}}"</p>
+      <p>update "{{dt.updateDate}}"</p>
+      <button title="delete data"(click)="delete(dt)">x</button>
+    </li>
+</div>
